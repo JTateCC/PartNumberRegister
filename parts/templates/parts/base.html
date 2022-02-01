@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
+{% load static %}
+<link rel="stylesheet" type='text/css' href="{% static 'parts/css/style.css' %}">
+<b>
+  {% block content %}
+  {% endblock %}
+</b>
 </html>

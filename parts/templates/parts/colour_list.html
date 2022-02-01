@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colour List</title>
+</head>
+<body>
+    {% for colour in colour_list %}
+    <hr>
+    {{ colour.colour_title }}
+    {{ colour.colour_ral }}
+    {% endfor %}
+</body>
+</html>

@@ -5,7 +5,16 @@
     <title>Project Detail</title>
 </head>
 <body>
-{{ project.project_title }}
-{{ project.project_number }}
+<h2>{{ project.project_title }}
+{{ project.project_number }}</h2>
+
+<hr>
+{% for part in project.parts.all %}
+    <hr>
+    <h3>
+        <a href = '{% url "parts:part_detail" pk=part.pk %}'>{{ part.part_number }} {{ part.part_title }}</a>
+    </h3>
+{% endfor %}
+
 </body>
 </html>

@@ -1,19 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Here is a full Part List</title>
-</head>
-<body>
+
+{% extends 'parts/base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th>Part Title</th>
+        <th>Part Number</th>
+        <th>Part Category</th>
+        <th>Part Project</th>
+        <th>Part Colour</th>
+    </tr>
 {% for part in part_list %}
-<hr>
-{{ part.part_title }}
-{{ part.part_number }}
-{{ part.part_category.category_title }}
-{{ part.part_project }}
-</hr>
+    <tr>
+        <td>{{ part.part_title }}</td>
+        <td>
+            <a href='{% url "parts:part_detail" pk=part.pk %}'>{{ part.part_number }}</a>
+        </td>
+        <td>{{ part.part_category }}</td>
+        <td>{{ part.part_project }}</td>
+        <td>{{ part.part_colour }}</td>
+    </tr>
 {% endfor %}
+</table>
 
 
-</body>
-</html>
+{% endblock %}

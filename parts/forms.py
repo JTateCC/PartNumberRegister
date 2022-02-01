@@ -10,3 +10,11 @@ class PartForm(forms.ModelForm):
                   'part_category',
                   'part_project',
                   ]
+
+class ProjectForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = ['project_number',
+                  'project_title',
+                  ]

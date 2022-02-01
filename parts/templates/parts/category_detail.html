@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Detail</title>
+</head>
+<body>
+<h2>{{ category.category_title }}
+
+<hr>
+{% for part in category.parts.all %}
+    <hr>
+    <h3>{{ part.part_number }}
+        {{ part.part_title }}</h3>
+{% endfor %}
+
+</body>
+</html>

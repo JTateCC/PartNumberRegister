@@ -1,2 +1,2 @@
 
-SECRET_KEY = 'ADD SECRET KEY'
+personal_key = 'your key here'
