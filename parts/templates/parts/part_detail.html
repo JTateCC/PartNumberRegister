@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Part Detail</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <body>
 {{ part.part_title }}
 {{ part.part_number }}
@@ -12,3 +10,4 @@
 {{ part.part_colour }}
 </body>
 </html>
+{% endblock %}

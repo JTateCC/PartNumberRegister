@@ -9,6 +9,7 @@ app_name = 'parts'
 
 urlpatterns = [
     # parts url paths
+    path('', PartListView.as_view(), name='part_list'),
     path('parts/', PartListView.as_view(), name='part_list'),
     path('parts/<int:pk>/', PartDetailView.as_view(), name='part_detail'),
     path('parts/newpart/', PartCreateView.as_view(), name='part_create'),

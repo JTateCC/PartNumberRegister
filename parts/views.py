@@ -1,20 +1,22 @@
 from django.shortcuts import render, reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView, DeleteView
 from parts.models import Part, Project, Category, Colour
 from parts.forms import PartForm
+# Base Home page View
 
 
 # Part CRUD Views
 
-class PartListView(ListView):
+class PartListView(LoginRequiredMixin, ListView):
     model = Part
 
 
-class PartDetailView(DetailView):
+class PartDetailView(LoginRequiredMixin, DetailView):
     model = Part
 
 
-class PartCreateView(CreateView):
+class PartCreateView(LoginRequiredMixin, CreateView):
     model = Part
     fields = ['part_number',
               'part_title',
@@ -26,7 +28,7 @@ class PartCreateView(CreateView):
         return reverse('parts:part_detail', kwargs={'pk': self.object.pk})
 
 
-class PartUpdateView(UpdateView):
+class PartUpdateView(LoginRequiredMixin, UpdateView):
     model = Part
     fields = '__all__'
     template_name = 'parts/part_form.html'
@@ -35,13 +37,13 @@ class PartUpdateView(UpdateView):
         return reverse('parts:detail', kwargs={'pk': self.object.pk})
 
 
-class PartFormView(FormView):
+class PartFormView(LoginRequiredMixin, FormView):
     form_class = PartForm
     template_name = 'parts/part_form.html'
     success_url = "/thanks"
 
 
-class PartDeleteView(DeleteView):
+class PartDeleteView(LoginRequiredMixin, DeleteView):
     model = Part
 
     def get_success_url(self):
@@ -50,15 +52,15 @@ class PartDeleteView(DeleteView):
 # Project CRUD Views
 
 
-class ProjectListView(ListView):
+class ProjectListView(LoginRequiredMixin, ListView):
     model = Project
 
 
-class ProjectDetailView(DetailView):
+class ProjectDetailView(LoginRequiredMixin, DetailView):
     model = Project
 
 
-class ProjectCreateView(CreateView):
+class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     fields = '__all__'
 
@@ -66,7 +68,7 @@ class ProjectCreateView(CreateView):
         return reverse('parts:project_detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
     fields = '__all__'
     template_name = 'parts/project_form.html'
@@ -75,7 +77,7 @@ class ProjectUpdateView(UpdateView):
         return reverse('parts:project_detail', kwargs={'pk': self.object.pk})
 
 
-class ProjectDeleteView(DeleteView):
+class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     model = Project
 
     def get_success_url(self):
@@ -84,15 +86,15 @@ class ProjectDeleteView(DeleteView):
 # Category CRUD Views
 
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
     model = Category
 
 
-class CategoryDetailView(DetailView):
+class CategoryDetailView(LoginRequiredMixin, DetailView):
     model = Category
 
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin, CreateView):
     model = Category
     fields = '__all__'
 
@@ -100,7 +102,7 @@ class CategoryCreateView(CreateView):
         return reverse('parts:category_detail', kwargs={'pk': self.object.pk})
 
 
-class CategoryUpdateView(UpdateView):
+class CategoryUpdateView(LoginRequiredMixin, UpdateView):
     model = Category
     fields = '__all__'
     template_name = 'parts/category_form.html'
@@ -109,7 +111,7 @@ class CategoryUpdateView(UpdateView):
         return reverse('parts:category_detail', kwargs={'pk': self.object.pk})
 
 
-class CategoryDeleteView(DeleteView):
+class CategoryDeleteView(LoginRequiredMixin, DeleteView):
     model = Category
 
     def get_success_url(self):
@@ -118,15 +120,15 @@ class CategoryDeleteView(DeleteView):
 
 # Colour CRUD Views
 
-class ColourListView(ListView):
+class ColourListView(LoginRequiredMixin, ListView):
     model = Colour
 
 
-class ColourDetailView(DetailView):
+class ColourDetailView(LoginRequiredMixin, DetailView):
     model = Colour
 
 
-class ColourCreateView(CreateView):
+class ColourCreateView(LoginRequiredMixin, CreateView):
     model = Colour
     fields = '__all__'
 
@@ -134,7 +136,7 @@ class ColourCreateView(CreateView):
         return reverse('parts:part_list')
 
 
-class ColourDeleteView(DeleteView):
+class ColourDeleteView(LoginRequiredMixin, DeleteView):
     model = Colour
 
     def get_success_url(self):

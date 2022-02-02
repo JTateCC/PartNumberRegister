@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete Colour</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <body>
   <form method="post">{% csrf_token %}
 
@@ -18,4 +16,4 @@
 
 
 </body>
-</html>
+{% endblock %}

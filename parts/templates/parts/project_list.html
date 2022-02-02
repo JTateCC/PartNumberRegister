@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Project List</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <body>
     {% for project in project_list %}
     <hr>
@@ -12,3 +10,5 @@
     {% endfor %}
 </body>
 </html>
+
+{% endblock %}

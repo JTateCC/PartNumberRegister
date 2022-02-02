@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Colour List</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <body>
     {% for colour in colour_list %}
     <hr>
@@ -11,4 +9,4 @@
     {{ colour.colour_ral }}
     {% endfor %}
 </body>
-</html>
+{% endblock %}

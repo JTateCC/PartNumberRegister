@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Category List</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
 <body>
     {% for category in category_list %}
     <hr>
     {{ category.category_title }}
     {% endfor %}
 </body>
-</html>
+{% endblock %}
