@@ -55,6 +55,7 @@ class Part(models.Model):
     part_project = models.ForeignKey(Project, null=True, blank=True, on_delete=models.SET_NULL, related_name='parts')
     part_colour = models.ForeignKey(Colour, null=True, blank=True, on_delete=models.SET_NULL, related_name='parts')
 
+
     def __str__(self):
         return f'{self.part_number} - {self.part_title}'
 

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
@@ -17,5 +18,11 @@
         <a class="btn btn-primary" href="{% url 'parts:part_delete' pk=part.pk %}" role="button">Delete Part</a>
     </div>
 </div>
+
+#TODO: remove hard coding
+<iframe src="{% static 'parts/edrawings/875.1125M16x50HexHeadBolt.html' %}"></iframe>
+
+
+
 
 {% endblock %}
