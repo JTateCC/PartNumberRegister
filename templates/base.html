@@ -18,7 +18,9 @@
 
 <!--- NavBar code -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="https://trelawnyspt.com/wp-content/uploads/2018/12/Trelawny-logo-retina.png">Part Register</a>
+      <a class="navbar-brand" href="https://trelawnyspt.com/">
+        <img src="{% static 'img/1591623051209.jfif' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+      </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         {% if user.is_authenticated %}
@@ -33,6 +35,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        <li class="nav-item">
+          <form action="{% url 'parts:search_result' %}" method="get">
+            <input name="q" type="text" placeholder="Search Parts...">
+          </form>
         </li>
         {% else %}
           <li class="nav-item">

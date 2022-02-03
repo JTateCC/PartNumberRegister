@@ -2,13 +2,26 @@
 
 {% block content %}
 
-<body>
-    {% for project in project_list %}
-    <hr>
-    {{ project.project_number }}
-    {{ project.project_title }}
-    {% endfor %}
-</body>
-</html>
+<p>
+    <a class="btn btn-primary" href='{% url "parts:project_create" %}' role="button">Create New Project</a>
+</p>
+
+<table>
+    <tr>
+        <th>Project Number</th>
+        <th>Project Title</th>
+    </tr>
+{% for project in project_list %}
+    <tr>
+        <td>
+            <a href='{% url "parts:project_detail" pk=project.pk %}'>{{ project.project_number }}</a>
+        </td>
+        <td>
+            {{ project.project_title }}
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
 
 {% endblock %}

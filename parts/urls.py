@@ -1,5 +1,5 @@
 from django.urls import path
-from parts.views import (PartListView, PartDetailView, PartCreateView, PartUpdateView, PartDeleteView,
+from parts.views import (PartListView, PartDetailView, PartCreateView, PartUpdateView, PartDeleteView, PartSearchView,
                          ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView,
                          CategoryListView, CategoryDetailView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView,
                          ColourListView, ColourDetailView, ColourCreateView, ColourDeleteView)
@@ -15,6 +15,7 @@ urlpatterns = [
     path('parts/newpart/', PartCreateView.as_view(), name='part_create'),
     path('parts/<int:pk>/update', PartUpdateView.as_view(),name='part_update'),
     path('parts/<int:pk>/delete/', PartDeleteView.as_view(), name='part_delete'),
+    path('parts/search_result/', PartSearchView.as_view(), name='search_result'),
     # projects url paths
     path('projects/', ProjectListView.as_view(), name='project_list'),
     path('projects/<int:pk>/', ProjectDetailView.as_view(), name='project_detail'),

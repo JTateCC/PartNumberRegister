@@ -1,12 +1,34 @@
-#wrapper{
+html {
+  background-color: black
+}
+
+#wrapper {
   background-color: black;
   color: white;
 }
 
-table, th{
+table, th {
   border: 3px solid white;
 }
 
-tr, td{
+tr, td {
   border: 1px dashed white;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 10px;
+}
+
+.grid-child{
+  border: 1px dashed white;
+}
+
+.grid-child.buttons{
+  padding: 5px;
+}
+
+.btn.btn-primary{
+ margin: 10px 10px 10px 10px;
 }

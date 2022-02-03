@@ -2,12 +2,20 @@
 
 {% block content %}
 
-<body>
-{{ part.part_title }}
-{{ part.part_number }}
-{{ part.part_category.category_title }}
-{{ part.part_project }}
-{{ part.part_colour }}
-</body>
-</html>
+<div class="grid-container">
+    <div class="grid-child">
+        <br>Part Title: {{ part.part_title }}
+        <br>Part Number: {{ part.part_number }}
+        <br>Category: {{ part.part_category.category_title }}
+        <br>Project: {{ part.part_project }}
+        <br>Colour: {{ part.part_colour }}
+    </div>
+
+    <div class="grid-child buttons">
+        <a class="btn btn-primary" href="{% url 'parts:part_update' pk=part.pk %}" role="button">Update Part</a>
+        <br>
+        <a class="btn btn-primary" href="{% url 'parts:part_delete' pk=part.pk %}" role="button">Delete Part</a>
+    </div>
+</div>
+
 {% endblock %}

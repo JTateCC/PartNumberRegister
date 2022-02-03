@@ -1,15 +1,18 @@
 from django.shortcuts import render, reverse
+from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView, DeleteView
 from parts.models import Part, Project, Category, Colour
 from parts.forms import PartForm
-# Base Home page View
 
-
-# Part CRUD Views
 
 class PartListView(LoginRequiredMixin, ListView):
     model = Part
+
+    def get_queryset(self):
+        qs = super(PartListView, self).get_queryset()
+        qs = qs.order_by('part_number')
+        return qs
 
 
 class PartDetailView(LoginRequiredMixin, DetailView):
@@ -34,7 +37,7 @@ class PartUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'parts/part_form.html'
 
     def get_success_url(self):
-        return reverse('parts:detail', kwargs={'pk': self.object.pk})
+        return reverse('parts:part_detail', kwargs={'pk': self.object.pk})
 
 
 class PartFormView(LoginRequiredMixin, FormView):
@@ -49,11 +52,28 @@ class PartDeleteView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse('parts:part_list')
 
+
+class PartSearchView(ListView):
+    model = Part
+    template_name = 'parts/search_result.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Part.objects.filter(
+            Q(part_number__icontains=query) | Q(part_title__icontains=query)
+        )
+        return object_list
+
 # Project CRUD Views
 
 
 class ProjectListView(LoginRequiredMixin, ListView):
     model = Project
+
+    def get_queryset(self):
+        qs = super(ProjectListView, self).get_queryset()
+        qs = qs.order_by('project_number')
+        return qs
 
 
 class ProjectDetailView(LoginRequiredMixin, DetailView):
