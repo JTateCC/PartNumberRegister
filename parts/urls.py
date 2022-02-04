@@ -2,7 +2,8 @@ from django.urls import path
 from parts.views import (PartListView, PartDetailView, PartCreateView, PartUpdateView, PartDeleteView, PartSearchView,
                          ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView,
                          CategoryListView, CategoryDetailView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView,
-                         ColourListView, ColourDetailView, ColourCreateView, ColourDeleteView)
+                         ColourListView, ColourDetailView, ColourCreateView, ColourDeleteView,
+                         FixingCategoryListView)
 
 
 app_name = 'parts'
@@ -33,4 +34,7 @@ urlpatterns = [
     path('colours/<int:pk>/', ColourDetailView.as_view(), name='colour_detail'),
     path('colours/newcolour/', ColourCreateView.as_view(), name='colour_create'),
     path('colours/<int:pk>/delete/', ColourDeleteView.as_view(), name='colour_delete'),
+    # fixing catalog paths
+    path('fixings/fixing_category/', FixingCategoryListView.as_view(), name='fixing_category_list'),
+    path('fixings/fixing_category/<int:pk>/', FixingCategoryListView.as_view(), name='fixing_category_detail'),
 ]

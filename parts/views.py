@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView, DeleteView
-from parts.models import Part, Project, Category, Colour
+from parts.models import Part, Project, Category, Colour, Fixing, FixingMetric, FixingFinish, FixingCategory
 from parts.forms import PartForm
 
 
@@ -161,3 +161,24 @@ class ColourDeleteView(LoginRequiredMixin, DeleteView):
 
     def get_success_url(self):
         return reverse('parts:colour_list')
+
+
+class FixingListView(LoginRequiredMixin, ListView):
+    model = Fixing
+
+
+class FixingCategoryListView(LoginRequiredMixin, ListView):
+    model = FixingCategory
+
+
+class FixingCategoryDetailView(LoginRequiredMixin, DetailView):
+    model = FixingCategory
+
+
+class FixingMetricView(LoginRequiredMixin, ListView):
+    model = FixingMetric
+
+
+
+
+

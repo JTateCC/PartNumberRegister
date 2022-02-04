@@ -1,0 +1,15 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+{% for fixing_category in fixing_category_list %}
+<a href='{% url parts:fixing_category_detail pk=fixing_category.pk'>{{ fixing_category.fixing_category_title }}</a>
+
+{% endfor %}
+
+
+
+{% endblock %}

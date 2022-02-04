@@ -1,9 +1,9 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 
-from parts.models import Part, Project, Category, Colour, FixingCategory, FixingMetric, Fixing
+from parts.models import Part, Project, Category, Colour, FixingCategory, FixingMetric, FixingFinish, Fixing
 
-models = [Project, Category, Colour, FixingCategory, FixingMetric, Fixing]
+models = [Project, Category, Colour, FixingCategory, FixingMetric, Fixing, FixingFinish]
 
 for m in models:
     admin.site.register(m)
