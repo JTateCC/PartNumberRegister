@@ -166,6 +166,17 @@ class ColourDeleteView(LoginRequiredMixin, DeleteView):
 class FixingListView(LoginRequiredMixin, ListView):
     model = Fixing
 
+    def get_queryset(self):
+        qs = super(FixingListView, self).get_queryset()
+        qs = qs.filter(fixing_category=self.kwargs['fixing_category'])
+        return qs
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(FixingListView, self).get_context_data(*args, **kwargs)
+        print(context['view'].kwargs)
+        return(context)
+
+
 
 class FixingCategoryListView(LoginRequiredMixin, ListView):
     model = FixingCategory

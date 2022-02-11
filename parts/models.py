@@ -41,9 +41,11 @@ class FixingMetric(models.Model):
     def __str__(self):
         return f'{self.metric_size}'
 
+
 class FixingFinish(models.Model):
     finish_title = models.TextField(unique=True)
     finish_abrv = models.CharField(max_length=4, unique=True)
+
 
 class Colour(models.Model):
     colour_title = models.TextField(unique=True)
@@ -51,6 +53,7 @@ class Colour(models.Model):
 
     def __str__(self):
         return f'{self.colour_title} - {self.colour_ral}'
+
 
 class Part(models.Model):
     part_number = models.CharField(max_length=15, unique=True)
@@ -63,12 +66,13 @@ class Part(models.Model):
     def __str__(self):
         return f'{self.part_number} - {self.part_title}'
 
+
 class Fixing(models.Model):
     fixing_length = models.IntegerField(null=True, blank=True)
     fixing_category = models.ForeignKey(FixingCategory, on_delete=models.SET_NULL,
-                                        null=True, related_name='fixing')
-    fixing_metric = models.ForeignKey(FixingMetric, on_delete=models.SET_NULL, null=True, related_name='fixing')
-    fixing_detail = models.CharField(max_length=50)
-    fixing_finish = models.ForeignKey(FixingFinish, on_delete=models.SET_NULL, null=True, related_name='fixing')
-    part = models.OneToOneField(Part, on_delete=models.CASCADE, null=True, related_name='fixing')
+                                        null=True, related_name='fixing_cat')
+    fixing_metric = models.ForeignKey(FixingMetric, on_delete=models.SET_NULL, null=True, related_name='fixing_met')
+    fixing_detail = models.CharField(max_length=50, null=True)
+    fixing_finish = models.ForeignKey(FixingFinish, on_delete=models.SET_NULL, null=True, related_name='fixing_fin')
+    part = models.OneToOneField(Part, on_delete=models.CASCADE, null=True, related_name='fixing_part')
 

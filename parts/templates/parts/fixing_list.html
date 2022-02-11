@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{ view. }}</h2>
+
+<div class="grid-container">
+
+    <div class="grid-child">
+
+        <table>
+            <tr>
+                <th>Fixing Number</th>
+                <th>Fixing Title</th>
+            </tr>
+            {% for f in fixing_list %}
+            <tr>
+                <td>
+                    {{ f.part.part_number }}</a>
+                <td>
+                    {{ f.part.part_title }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+
+    </div>
+
+
+
+{% endblock %}

@@ -3,7 +3,7 @@ from parts.views import (PartListView, PartDetailView, PartCreateView, PartUpdat
                          ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView,
                          CategoryListView, CategoryDetailView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView,
                          ColourListView, ColourDetailView, ColourCreateView, ColourDeleteView,
-                         FixingCategoryListView)
+                         FixingCategoryListView, FixingListView)
 
 
 app_name = 'parts'
@@ -36,5 +36,5 @@ urlpatterns = [
     path('colours/<int:pk>/delete/', ColourDeleteView.as_view(), name='colour_delete'),
     # fixing catalog paths
     path('fixings/fixing_category/', FixingCategoryListView.as_view(), name='fixing_category_list'),
-    path('fixings/fixing_category/<int:pk>/', FixingCategoryListView.as_view(), name='fixing_category_detail'),
+    path('fixings/fixing_category/<int:fixing_category>/', FixingListView.as_view(), name='fixing_list'),
 ]
